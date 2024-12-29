@@ -38,25 +38,24 @@ namespace ObsApp
             using (OkulDbContext ctx = new OkulDbContext())
             {
 
-                // Ýlk sonucu alýr, veya varsa null döner
                 var sinifId = ctx.Siniflar.Where(s => s.SinifAd == combo_sinif.Text).Select(s => s.SinifId).FirstOrDefault();
 
                 var sinif = ctx.Siniflar.Where(s => s.SinifId == sinifId).FirstOrDefault();
 
                 if (sinif != null)
                 {
-                    // Kontenjaný kontrol et
+                    
                     int mevcutOgrenciSayisi = ctx.Ogrenciler.Count(o => o.SinifId == sinifId);
 
                     if (mevcutOgrenciSayisi >= sinif.Kontenjan)
                     {
-                        // Kontenjan dolmuþsa hata mesajý göster
+                       
                         MessageBox.Show("Sýnýf kontenjaný dolmuþ. Öðrenci eklenemez.");
                     }
                     else
                     {
 
-                        // `SinifId`'yi doðrudan `Sinif`'e atýyoruz
+                      
                         ogrenci.Sinif = ctx.Siniflar.FirstOrDefault(s => s.SinifId == sinifId);
                         ctx.Ogrenciler.Add(ogrenci);
                         int sonuc = ctx.SaveChanges();
@@ -149,7 +148,7 @@ namespace ObsApp
             dersSecim.Show();
         }
 
-        //Bütün textlere TextChanged eventi yazdýk
+       
         private void text_changed(object sender, EventArgs e)
         {
             TextBox txt = (TextBox)sender;

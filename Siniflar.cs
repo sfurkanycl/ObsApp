@@ -27,7 +27,7 @@ namespace ObsApp
             bool kontrol = false;
             foreach (Control item in grp_sinifEkle.Controls)
             {
-                if (item is TextBox && item.Text == String.Empty) //item textbox ise ve texti boşsa
+                if (item is TextBox && item.Text == String.Empty) 
                 {
                     item.BackColor = Color.Red;
                     kontrol = true;
@@ -36,7 +36,7 @@ namespace ObsApp
             if (kontrol)
             {
                 MessageBox.Show("Tüm Alanlar Zorunludur");
-                return; //Bunun sayesinde textbox boş olursa aşağı devam edip boş olmasına rağmen kayıt eklemesin diye döngüden çıkartıyoruz
+                return; 
 
             }
 
@@ -107,8 +107,8 @@ namespace ObsApp
                 if (sinif != null)
                 {
                     this.sinif = sinif;
-                    txt_kontenjan.Text = sinif.Kontenjan.ToString();  // Kontenjanı textbox'a yaz
-                    txt_sinifAdi.Text = sinif.SinifAd;  // Sınıf adını textbox'a yaz
+                    txt_kontenjan.Text = sinif.Kontenjan.ToString();  
+                    txt_sinifAdi.Text = sinif.SinifAd; 
                 }
                 else
                 {

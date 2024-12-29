@@ -22,10 +22,10 @@ namespace ObsApp
 
         private void DersSecimi_Load(object sender, EventArgs e)
         {
-            // MultiSelect özelliğini aktif hale getiriyoruz
+          
             dataGridView1.MultiSelect = true;
 
-            // DataGridView'de seçilen satırlara göre işlem yapılabilmesi için SelectionMode'u FullRowSelect yapıyoruz
+            
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             using (OkulDbContext ctx = new OkulDbContext())
@@ -43,7 +43,6 @@ namespace ObsApp
                     return;
                 }
 
-                //Sadece belirli kolonları çağırmak için
                 var dersler = ctx.Dersler.Select(d => new { d.DersId, d.DersAdi, d.DersKodu }).ToList();
                 dataGridView1.DataSource = dersler;
 
@@ -57,9 +56,9 @@ namespace ObsApp
             int Id = int.Parse(lbl_ogrencıID.Text);
             using (OkulDbContext ctx = new OkulDbContext())
             {
-                //  var ogr_Id = ogrenciNo;
+                
                 var ogrenciDersler = new List<tblOgrenciDers>();
-                // Seçilen satırları dolaşıyoruz
+             
                 foreach (DataGridViewRow satir in dataGridView1.SelectedRows)
                 {
                     int dersId = Convert.ToInt32(satir.Cells["DersId"].Value);
